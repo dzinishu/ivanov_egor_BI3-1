@@ -57,7 +57,7 @@ def task_04(price, discount_percent):
         task_04(199.99, 10) == 179.99
         task_04(500, 0) == 500.0
     """
-    final_price = price * (1 - discount_percent * 0.1)
+    final_price = price * (1 - discount_percent * 0.01)
     return round(final_price, 2)
 
 
