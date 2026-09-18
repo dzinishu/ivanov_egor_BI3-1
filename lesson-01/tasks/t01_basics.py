@@ -89,3 +89,4 @@ def task_06(name):
         task_06("  ЖАН-КЛОД  ван дАММ ") == "Жан-клод Ван Дамм"
     """
     return " ".join(word.capitalize() for word in name.split())
+
