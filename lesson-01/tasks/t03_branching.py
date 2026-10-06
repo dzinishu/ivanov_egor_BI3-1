@@ -1,4 +1,6 @@
 """Тема 3. Операторы ветвления: if/elif/else, логические операторы, словарь вместо switch."""
+import operator
+from multiprocessing import resource_tracker
 
 
 def task_13(n):
@@ -11,7 +13,12 @@ def task_13(n):
         task_13(-3) == -1
         task_13(0) == 0
     """
-    raise NotImplementedError("Реализуйте task_13")
+    if n > 0:
+        return 1
+    elif n < 0:
+        return -1
+    else:
+        return 0
 
 
 def task_14(score):
@@ -29,7 +36,17 @@ def task_14(score):
         task_14(60) == "удовлетворительно"
         task_14(59) == "неудовлетворительно"
     """
-    raise NotImplementedError("Реализуйте task_14")
+    if score > 74:
+        if score > 89:
+            return "отлично"
+        else :
+            return "хорошо"
+    else :
+        if score < 60:
+            return "неудовлетворительно"
+        else :
+            return "удовлетворительно"
+
 
 
 def task_15(age, is_citizen):
@@ -44,7 +61,12 @@ def task_15(age, is_citizen):
         task_15(17, True) == False
         task_15(18, True) == True
     """
-    raise NotImplementedError("Реализуйте task_15")
+    if age >= 18 and is_citizen == True:
+        return True
+    else:
+        return False
+
+
 
 
 def task_16(password):
@@ -62,7 +84,20 @@ def task_16(password):
         task_16("StrongPass") == False   # нет цифры
         task_16("Str1") == False         # короткий
     """
-    raise NotImplementedError("Реализуйте task_16")
+    if len(password) < 8:
+        return False
+
+    has_upper = False
+    has_digit = False
+
+    for simvol in password:
+        if simvol.isupper():
+            has_upper = True
+        if simvol.isdigit():
+            has_digit = True
+
+    return has_upper and has_digit
+
 
 
 def task_17(year):
@@ -77,7 +112,11 @@ def task_17(year):
         task_17(1900) == False   # делится на 100, но не на 400
         task_17(2000) == True    # делится на 400
     """
-    raise NotImplementedError("Реализуйте task_17")
+    if (year % 4 ==0 and year % 100 != 0 ) or year % 400 == 0:
+        return True
+    else:
+        return False
+
 
 
 def task_18(op, a, b):
@@ -96,4 +135,20 @@ def task_18(op, a, b):
         task_18("/", 5, 0) is None
         task_18("^", 2, 3) is None
     """
-    raise NotImplementedError("Реализуйте task_18")
+
+    import operator
+
+    if op == "/" and b == 0:
+        return None
+
+    operations = {
+        "+": operator.add,
+        "-": operator.sub,
+        "*": operator.mul,
+        "/": operator.truediv,
+    }
+
+    if op not in operations:
+        return None
+
+    return operations[op](a, b)
