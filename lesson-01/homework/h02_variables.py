@@ -15,7 +15,14 @@ def hw_05():
         acc(0) == 8
         acc(-10) == -2
     """
-    raise NotImplementedError("Реализуйте hw_05")
+    total = 0
+
+    def accumulator(value):
+        nonlocal total
+        total += value
+        return total
+
+    return accumulator
 
 
 def hw_06(settings, defaults):
@@ -31,4 +38,4 @@ def hw_06(settings, defaults):
             == {"тема": "тёмная", "язык": "ru"}
         hw_06({}, {"a": 1}) == {"a": 1}
     """
-    raise NotImplementedError("Реализуйте hw_06")
+    return defaults | settings
